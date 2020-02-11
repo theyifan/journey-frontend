@@ -1,9 +1,12 @@
 import React from "react";
+import Paper from "@material-ui/core/Paper";
 
 function Question() {
-  return <div>
-    This is the question component.
-  </div>;
+  return (
+    <div>
+      <Paper style={{ padding: 180 }}></Paper>
+    </div>
+  );
 }
 
 export default Question;

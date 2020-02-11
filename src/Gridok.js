@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Gridok() {
+export default function Grid() {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
 
