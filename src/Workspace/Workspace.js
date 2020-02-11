@@ -1,7 +1,4 @@
 import React from "react";
-import Editor from "./Editor";
-import REPL from "./REPL";
-import Question from "./Question";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -12,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Workspace() {
+function Workspace(props) {
   const classes = useStyles();
   return (
     <div>
@@ -25,15 +22,15 @@ function Workspace() {
       >
         <Box paddingLeft="30px">
           <Grid>
-            <Editor />
+            {props.editor}
           </Grid>
         </Box>
 
         <Grid direction="column">
-          <REPL />
+          {props.repl}
 
           <Grid>
-            <Question />
+            {props.question}
           </Grid>
         </Grid>
       </Grid>

@@ -3,6 +3,7 @@ import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import { Link } from 'react-router-dom'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -31,12 +32,11 @@ function Configuration() {
           onChange={handleChange}
           MenuProps={MenuProps}
         >
-          <MenuItem value={"Mission"}>Mission</MenuItem>
+          <MenuItem value={"Mission"}><Link to='/mission'>Mission</Link></MenuItem>
           <MenuItem value={"Quest"}>Quest</MenuItem>
           <MenuItem value={"Contest"}>Contest</MenuItem>
-          <MenuItem value={"Playground"}>Playground</MenuItem>
+          <MenuItem value={"Playground"}><Link to='/playground'>Playground</Link></MenuItem>
         </Select>
-        {button}
       </Button>
     </div>
   );

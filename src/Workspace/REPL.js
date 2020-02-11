@@ -1,7 +1,7 @@
 import React from "react";
 
 function REPL() {
-  return <div></div>;
+  return <div> This is the REPL component </div>;
 }
 
 export default REPL;
