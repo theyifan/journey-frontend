@@ -15,136 +15,17 @@ import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import SourceSideList from "./SourceSideList";
+import LibrarySideList from "./LibrarySideList";
+import Runner from "../library_function/Runner";
+import ModuleLoader from "../library_function/ModuleLoader";
+import Box from "@material-ui/core/Box";
 
 function SideBar() {
+  //state area
   const [source, setSource] = React.useState("source1");
-  const [openLibrary, setOpenLibrary] = React.useState(false);
+  const [library, setLibrary] = React.useState("Library");
   const [open, setOpen] = React.useState(false);
-  const useStyles = makeStyles({
-    list1: {
-      width: 160
-    },
-    list2: {
-      width: 200
-    },
-    fullList: {
-      width: "auto"
-    }
-  });
-  const handleClick1 = () => {
-    setSource("source1");
-  };
-  const handleClick2 = () => {
-    setSource("source2");
-  };
-  const handleClick3 = () => {
-    setSource("source3");
-  };
-  const handleClick4 = () => {
-    setSource("source4");
-  };
-
-  const sourceSideList = side => (
-    <div
-      className={classes.list1}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        <ListItem>
-          <IconButton onClick={handleClick1}>
-            <ListItemIcon>
-              <Battery20Icon />
-            </ListItemIcon>
-            <ListItemText align="right" primary={"Source 1"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton onClick={handleClick2}>
-            <ListItemIcon>
-              <Battery50Icon />
-            </ListItemIcon>
-            <ListItemText align="right" primary={"Source 2"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton onClick={handleClick3}>
-            <ListItemIcon>
-              <Battery80Icon />
-            </ListItemIcon>
-            <ListItemText align="right" primary={"Source 3"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton onClick={handleClick4}>
-            <ListItemIcon>
-              <BatteryFullIcon />
-            </ListItemIcon>
-            <ListItemText align="right" primary={"Source 4"} />
-          </IconButton>
-        </ListItem>
-      </List>
-    </div>
-  );
-
-  const librarySideList = side => (
-    <div
-      className={classes.list2}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"NONE"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"RUNES"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"CURVES"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"SOUNDS"} />
-          </IconButton>
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"BINARYTREES"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"PIX&FLIX"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"MACHINE LEARNING"} />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <IconButton>
-            <ListItemText align="right" primary={"ALL"} />
-          </IconButton>
-        </ListItem>
-      </List>
-    </div>
-  );
-
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -152,7 +33,7 @@ function SideBar() {
     right1: false,
     right2: false
   });
-
+  //control state area
   const toggleDrawer = (side, open) => event => {
     if (
       event.type === "keydown" &&
@@ -171,8 +52,55 @@ function SideBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  //style area
+  const useStyles = makeStyles({
+    list1: {
+      width: 160
+    },
+    list2: {
+      width: 200
+    },
+    fullList: {
+      width: "auto"
+    }
+  });
   const classes = useStyles();
-  const theme = useTheme();
+
+  //call back function for source bar
+  const callBackSource = childData => {
+    return () => setSource(childData);
+  };
+  const callBackLibrary = childData => {
+    if (childData === "NONE") {
+      return () => setLibrary("Library");
+    } else {
+      return () => setLibrary(childData);
+    }
+  };
+
+  //source bar component
+  const sourceSideList = side => (
+    <div
+      className={classes.list1}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <SourceSideList callBack={callBackSource} />
+    </div>
+  );
+  // Library bar component
+  const librarySideList = side => (
+    <div
+      className={classes.list2}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <LibrarySideList callBack={callBackLibrary} />
+    </div>
+  );
+
   const sourceIcon =
     source === "source1" ? (
       <Battery20Icon />
@@ -184,7 +112,7 @@ function SideBar() {
       <BatteryFullIcon />
     );
   return (
-    <div>
+    <div className={classes.toolbar}>
       <Divider />
       <List>
         <ListItem>
@@ -203,12 +131,12 @@ function SideBar() {
             </IconButton>
           </ListItemIcon>
 
-          <ListItemText primary={"Library"} />
+          <ListItemText primary={library} />
         </ListItem>
 
         <ListItem>
           <ListItemIcon>
-            <IconButton onClick={handleDrawerClose}>
+            <IconButton>
               <ShareIcon />
             </IconButton>
           </ListItemIcon>
@@ -234,7 +162,6 @@ function SideBar() {
           <ListItemText primary={"Share"} />
         </ListItem>
       </List>
-
       <Drawer
         anchor="right"
         open={state.right1}
@@ -242,7 +169,6 @@ function SideBar() {
       >
         {sourceSideList("right1")}
       </Drawer>
-
       <Drawer
         anchor="right"
         open={state.right2}

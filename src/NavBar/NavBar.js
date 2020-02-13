@@ -43,11 +43,14 @@ const useStyles = makeStyles(theme => ({
     display: "none"
   },
   drawer: {
-    width: drawerWidth,
+    width: 10,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    [theme.breakpoints.down("xs")]: {
+      width: "100%"
+    }
   },
   drawerHeader: {
     display: "flex",
@@ -75,10 +78,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function NavBar() {
+  //styling area
   const classes = useStyles();
   const theme = useTheme();
+  //state area
   const [open, setOpen] = React.useState(false);
-
+  //handle the openness and closeness of sidebar
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -109,6 +114,7 @@ function NavBar() {
           <Typography variant="h6" noWrap>
             Source Academy
           </Typography>
+
           <div style={{ textAlign: "right" }}>
             <Typography variant="button" align="right">
               <Configuration />
@@ -135,6 +141,7 @@ function NavBar() {
             )}
           </IconButton>
         </div>
+
         <SideBar />
       </Drawer>
       <main
