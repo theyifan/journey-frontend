@@ -3,7 +3,8 @@ import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
-import { Link } from 'react-router-dom'
+import WebIcon from "@material-ui/icons/Web";
+import { Link } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -17,27 +18,59 @@ const MenuProps = {
 };
 
 function Configuration() {
-  const [button, setButton] = useState();
+  const [configList, setConfigList] = useState();
 
   const handleChange = event => {
-    setButton(event.target.value);
+    setConfigList(event.target.value);
+  };
+  const handleSelectOpen = () => {
+    setConfigList(!configList);
   };
   return (
     <div>
-      <Button variant="contained" color="primary" href="#contained-buttons">
-        <Select
-          value={button}
-          defaultValue="Playground"
-          input={<Input />}
-          onChange={handleChange}
-          MenuProps={MenuProps}
+      <Select
+        value={configList}
+        input={<Input />}
+        onChange={handleChange}
+        MenuProps={MenuProps}
+        IconComponent={props => (
+          <div>
+            <i {...props} className={`material-icons ${props.className}`}>
+              <WebIcon />
+            </i>
+          </div>
+        )}
+        style={{ backgroundColor: "inherit" }}
+      >
+        <MenuItem value={"Mission"}>
+          <Link
+            to="/content/mission"
+            style={{ textDecoration: "none", color: "#795548" }}
+          >
+            Mission
+          </Link>
+        </MenuItem>
+        <MenuItem
+          value={"Quest"}
+          style={{ textDecoration: "none", color: "#795548" }}
         >
-          <MenuItem value={"Mission"}><Link to='/mission'>Mission</Link></MenuItem>
-          <MenuItem value={"Quest"}>Quest</MenuItem>
-          <MenuItem value={"Contest"}>Contest</MenuItem>
-          <MenuItem value={"Playground"}><Link to='/playground'>Playground</Link></MenuItem>
-        </Select>
-      </Button>
+          Quest
+        </MenuItem>
+        <MenuItem
+          value={"Contest"}
+          style={{ textDecoration: "none", color: "#795548" }}
+        >
+          Contest
+        </MenuItem>
+        <MenuItem value={"Playground"}>
+          <Link
+            to="/content/playground"
+            style={{ textDecoration: "none", color: "#795548" }}
+          >
+            Playground
+          </Link>
+        </MenuItem>
+      </Select>
     </div>
   );
 }

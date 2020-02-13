@@ -43,14 +43,11 @@ const useStyles = makeStyles(theme => ({
     display: "none"
   },
   drawer: {
-    width: 10,
+    width: drawerWidth,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth,
-    [theme.breakpoints.down("xs")]: {
-      width: "100%"
-    }
+    width: drawerWidth
   },
   drawerHeader: {
     display: "flex",
@@ -141,7 +138,6 @@ function NavBar() {
             )}
           </IconButton>
         </div>
-
         <SideBar />
       </Drawer>
       <main

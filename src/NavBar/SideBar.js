@@ -19,7 +19,6 @@ import SourceSideList from "./SourceSideList";
 import LibrarySideList from "./LibrarySideList";
 import Runner from "../library_function/Runner";
 import ModuleLoader from "../library_function/ModuleLoader";
-import Box from "@material-ui/core/Box";
 
 function SideBar() {
   //state area
@@ -74,7 +73,10 @@ function SideBar() {
     if (childData === "NONE") {
       return () => setLibrary("Library");
     } else {
-      return () => setLibrary(childData);
+      return () => {
+        ModuleLoader(childData);
+        setLibrary(childData);
+      }
     }
   };
 
@@ -112,7 +114,7 @@ function SideBar() {
       <BatteryFullIcon />
     );
   return (
-    <div className={classes.toolbar}>
+    <div>
       <Divider />
       <List>
         <ListItem>

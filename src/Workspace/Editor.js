@@ -1,8 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Box from "@material-ui/core/Box";
 
-function Editor() {
+function Editor(props) {
   return (
     <TextField
       id="outlined-multiline-static"
@@ -12,6 +11,7 @@ function Editor() {
       PlaceHolder="Code starts here..."
       variant="outlined"
       style={{ width: "100%" }}
+      onChange={e => props.callBack(e.target.value)}
       fullWidth
     />
   );
