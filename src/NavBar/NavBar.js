@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -17,13 +16,15 @@ const drawerWidth = 140;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    // border: '1px solid red'
   },
   appBar: {
+    backgroundColor: 'black',
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -71,6 +72,12 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  configuration: {
+    margin: theme.spacing(1),
+  },
+  logo: {
+    flexGrow: 1
   }
 }));
 
@@ -91,7 +98,6 @@ function NavBar() {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -108,15 +114,13 @@ function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.logo}>
             Source Academy
           </Typography>
-
-          <div style={{ textAlign: "right" }}>
-            <Typography variant="button" align="right">
-              <Configuration />
-            </Typography>
-          </div>
+          <Configuration className={classes.configuration}/>
+          <Configuration className={classes.configuration} config="version"/>
+          <Configuration className={classes.configuration} config="lib"/>
+          <Configuration className={classes.configuration} config="language"/>
         </Toolbar>
       </AppBar>
 

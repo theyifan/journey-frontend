@@ -1,77 +1,96 @@
 import React, { useState } from "react";
-import Input from "@material-ui/core/Input";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
-import WebIcon from "@material-ui/icons/Web";
+import { makeStyles } from '@material-ui/core/styles';
+import { Input, MenuItem, Select, Button, FormControl} from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(0,1),
+    // minWidth: 120,
+    backgroundColor: '#333',
+    borderRadius: '5px',
+  },
+  icon: {
+    color: '#aaa',
+  },
+  links: {
+    color: 'white',
+    textDecoration: 'none'
+  },
+  select: {
+    padding: theme.spacing(0.5),
+    color: '#ddd',
+    '&:before': {
+      border: 'none',
+    },
+    '&:after': {
+      border: 'none',
+    },
+    '&:hover:not(.Mui-disabled):before': {
+      borderColor: '#aaa',
     }
-  }
-};
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
-function Configuration() {
-  const [configList, setConfigList] = useState();
+function Configuration(props) {
+  const classes = useStyles();
+  
+  //Change this when data from props is ready. 
+  const [configList, setConfigList] = useState(0);
+  let use;
+  const sourceVersions = ['Source 1','Source 2', 'Source 3', 'Source 4'];
+  const libraries = ['all', 'runes', 'curves', 'pix&flix', 'machine learning'];
+  const languages = ['brainfuck', 'source', 'javascript', 'typescript', 'ruby', 'python'];
+  const configurations = ['playground', 'mission', 'quest', 'missioneditor'];
+
+  switch (props.config) {
+    case 'version':
+      use = sourceVersions;
+      break;
+    case 'lib':
+      use = libraries;
+      break;
+    case 'language':
+      use = languages;
+      break;
+    default:
+      use = configurations;
+  }
 
   const handleChange = event => {
     setConfigList(event.target.value);
   };
-  const handleSelectOpen = () => {
-    setConfigList(!configList);
-  };
+
   return (
-    <div>
-      <Select
-        value={configList}
-        input={<Input />}
-        onChange={handleChange}
-        MenuProps={MenuProps}
-        IconComponent={props => (
-          <div>
-            <i {...props} className={`material-icons ${props.className}`}>
-              <WebIcon />
-            </i>
-          </div>
-        )}
-        style={{ backgroundColor: "inherit" }}
-      >
-        <MenuItem value={"Mission"}>
-          <Link
-            to="/content/mission"
-            style={{ textDecoration: "none", color: "#795548" }}
-          >
-            Mission
-          </Link>
-        </MenuItem>
-        <MenuItem
-          value={"Quest"}
-          style={{ textDecoration: "none", color: "#795548" }}
+    <>
+      <FormControl className={classes.formControl}>
+        <Select
+          className={classes.selectEmpty, classes.select}
+          value={configList}
+          onChange={handleChange}
+          displayEmpty
+          autoWidth
+          inputProps={{
+            classes: {
+              icon: classes.icon,
+            },
+          }}
         >
-          Quest
-        </MenuItem>
-        <MenuItem
-          value={"Contest"}
-          style={{ textDecoration: "none", color: "#795548" }}
-        >
-          Contest
-        </MenuItem>
-        <MenuItem value={"Playground"}>
-          <Link
-            to="/content/playground"
-            style={{ textDecoration: "none", color: "#795548" }}
-          >
-            Playground
-          </Link>
-        </MenuItem>
-      </Select>
-    </div>
+          {
+            props.config 
+            ? use.map((el, index) => (
+              <MenuItem key={index} value={index}>{el}</MenuItem>
+            ))
+            : use.map((el, index) => (
+              <MenuItem key={index} value={index} component={Link} to={`${el}`}>{el}</MenuItem>
+            ))
+          }
+        </Select>
+      </FormControl>
+    </>
   );
 }
 
