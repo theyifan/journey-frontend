@@ -8,7 +8,7 @@ function Editor(props) {
       label="Editor"
       multiline
       rows="37"
-      PlaceHolder="Code starts here..."
+      placeholder="Code starts here..."
       variant="outlined"
       style={{ width: "100%" }}
       onChange={e => props.callBack(e.target.value)}
