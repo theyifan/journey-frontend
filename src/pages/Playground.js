@@ -4,8 +4,14 @@ import Editor from "../Workspace/Editor";
 import REPL from "../Workspace/REPL";
 
 function Playground() {
+  const preloadedProg = "// Type your program in here\n\n";
+
   return (
-    <Workspace editor = {<Editor />} repl = {<REPL />} />
+    <Workspace 
+      editor = {<Editor 
+        currentProgram={preloadedProg}
+      />} 
+      repl = {<REPL />} />
   )
 }
 
