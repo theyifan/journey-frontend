@@ -1,7 +1,12 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 
-function Editor(props) {
+export interface IEditorProps {
+  callBack: (inputCode: string) => void;
+}
+
+
+function Editor(props: IEditorProps) {
   return (
     <TextField
       id="outlined-multiline-static"

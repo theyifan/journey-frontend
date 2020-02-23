@@ -1,5 +1,5 @@
 import React from 'react';
-import Workspace from '../Workspace/Workspace';
+import Workspace from '../Workspace';
 import Question from '../Workspace/Question';
 import Editor from "../Workspace/Editor";
 import REPL from "../Workspace/REPL";

@@ -1,12 +1,12 @@
 import React from "react";
-import WorkSpace from "./Workspace/Workspace";
 import NavBar from "./NavBar/NavBar";
+import Workspace from "./Workspace";
 
 function App() {
   return (
     <div>
       <NavBar />
-      <WorkSpace />
+      {/* <Workspace editor = {<Editor />} repl = {<REPL />} question = {<Question />} /> */}
     </div>
   );
 }

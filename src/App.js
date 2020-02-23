@@ -10,21 +10,11 @@ function App() {
   return (
     <CssBaseline>
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={OpenPage} />
-          <Route
-            path="/content"
-            render={() => (
-              <div>
                 <NavBar />
                 <Switch>
-                  <Route path="/content/mission" component={Mission} />
-                  <Route path="/content/playground" component={Playground} />
+                  <Route path="/mission" component={Mission} />
+                  <Route path="/playground" component={Playground} />
                 </Switch>
-              </div>
-            )}
-          />
-        </Switch>
       </BrowserRouter>
     </CssBaseline>
   );

@@ -10,7 +10,7 @@ const style = {
 };
 
 function REPL(props) {
-  const code = props.code;
+  const code = props.editorInput;
   const runState = props.runState;
   const [finishRun, setFinishRun] = React.useState(false);
   const callBackFromRunner = () => {
