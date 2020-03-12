@@ -10,11 +10,10 @@ function App() {
   return (
     <CssBaseline>
       <BrowserRouter>
-                <NavBar />
-                <Switch>
-                  <Route path="/mission" component={Mission} />
-                  <Route path="/playground" component={Playground} />
-                </Switch>
+        <Switch>
+          <Route path="/mission" component={Mission} />
+          <Route path="/playground" component={Playground} />
+        </Switch>
       </BrowserRouter>
     </CssBaseline>
   );

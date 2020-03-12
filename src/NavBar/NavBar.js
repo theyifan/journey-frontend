@@ -81,7 +81,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function NavBar() {
+function NavBar({
+  version = false,
+  library = false,
+  language = false,
+  seed = 0,
+}) {
+
   //styling area
   const classes = useStyles();
   const theme = useTheme();
@@ -117,10 +123,10 @@ function NavBar() {
           <Typography variant="h6" noWrap className={classes.logo}>
             Source Academy
           </Typography>
-          <Configuration className={classes.configuration}/>
-          <Configuration className={classes.configuration} config="version"/>
-          <Configuration className={classes.configuration} config="lib"/>
-          <Configuration className={classes.configuration} config="language"/>
+          { version && <Configuration className={classes.configuration} config="version"/> }
+          { library && <Configuration className={classes.configuration} config="lib"/> }
+          { language && <Configuration className={classes.configuration} config="language"/> }
+          <Configuration className={classes.configuration} seed = {seed}/>
         </Toolbar>
       </AppBar>
 

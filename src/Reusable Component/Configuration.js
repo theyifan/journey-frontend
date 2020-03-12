@@ -39,7 +39,7 @@ function Configuration(props) {
   const classes = useStyles();
   
   //Change this when data from props is ready. 
-  const [configList, setConfigList] = useState(0);
+  const [configList, setConfigList] = useState(props.seed || 0);
   let use;
   const sourceVersions = ['Source 1','Source 2', 'Source 3', 'Source 4'];
   const libraries = ['all', 'runes', 'curves', 'pix&flix', 'machine learning'];
