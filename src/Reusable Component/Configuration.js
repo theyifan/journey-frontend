@@ -85,7 +85,7 @@ function Configuration(props) {
               <MenuItem key={index} value={index}>{el}</MenuItem>
             ))
             : use.map((el, index) => (
-              <MenuItem key={index} value={index} component={Link} to={`${el}`}>{el}</MenuItem>
+              <MenuItem key={index} value={index} component={Link} to={`/${el}`}>{el}</MenuItem>
             ))
           }
         </Select>

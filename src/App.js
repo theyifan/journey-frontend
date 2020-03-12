@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Mission from "./pages/Mission";
+import MissionOverview from "./pages/MissionOverview";
 import Playground from "./pages/Playground";
 import NavBar from "./NavBar/NavBar";
 import OpenPage from "./OpenPage/OpenPage";
@@ -11,7 +12,9 @@ function App() {
     <CssBaseline>
       <BrowserRouter>
         <Switch>
-          <Route path="/mission" component={Mission} />
+          <Route exact path="/" component={NavBar} /> 
+          <Route exact path="/mission" component={MissionOverview} />
+          <Route path="/mission/:missionID/:page" component={Mission} />
           <Route path="/playground" component={Playground} />
         </Switch>
       </BrowserRouter>
