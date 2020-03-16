@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import Runner from "./../library_function/Runner";
+import Runner from "../library_function/Runner";
 
 const style = {
   height: 305
