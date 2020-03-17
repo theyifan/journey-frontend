@@ -7,7 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import SideBar from "./SideBar";
+import SideBar from "./SideBar2";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Configuration from "../Reusable Component/Configuration";
@@ -16,15 +16,15 @@ const drawerWidth = 140;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
+    display: "flex"
     // border: '1px solid red'
   },
   appBar: {
-    backgroundColor: 'black',
+    backgroundColor: "black",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    }),
+    })
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 0
   },
   configuration: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   logo: {
     flexGrow: 1
@@ -85,9 +85,8 @@ function NavBar({
   version = false,
   library = false,
   language = false,
-  seed = 0,
+  seed = 0
 }) {
-
   //styling area
   const classes = useStyles();
   const theme = useTheme();
@@ -123,10 +122,19 @@ function NavBar({
           <Typography variant="h6" noWrap className={classes.logo}>
             Source Academy
           </Typography>
-          { version && <Configuration className={classes.configuration} config="version"/> }
-          { library && <Configuration className={classes.configuration} config="lib"/> }
-          { language && <Configuration className={classes.configuration} config="language"/> }
-          <Configuration className={classes.configuration} seed = {seed}/>
+          {version && (
+            <Configuration className={classes.configuration} config="version" />
+          )}
+          {library && (
+            <Configuration className={classes.configuration} config="lib" />
+          )}
+          {language && (
+            <Configuration
+              className={classes.configuration}
+              config="language"
+            />
+          )}
+          <Configuration className={classes.configuration} seed={seed} />
         </Toolbar>
       </AppBar>
 
