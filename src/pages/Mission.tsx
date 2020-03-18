@@ -9,7 +9,10 @@ function Mission() {
   return (
     <>
       <NavBar seed={1}/>
-      <Workspace editor = {<Editor callBack = {() => {}} />} repl = {<REPL />} question = {<Question />} />
+      <Workspace 
+        editor = {<Editor preloadedProg = "mission" callBack = {() => {}} />} 
+        repl = {<REPL />} 
+        question = {<Question />} />
     </>
   )
 }

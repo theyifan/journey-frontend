@@ -10,7 +10,7 @@ function Playground() {
   return (
     <>
       <NavBar version library/>
-      <Workspace editor = {<Editor />} repl = {<REPL />} />
+      <Workspace editor = {<Editor preloadedProg={preloadedProg}/>} repl = {<REPL />} />
     </>
   )
 }

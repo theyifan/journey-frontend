@@ -1,43 +1,37 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+import AceEditor from 'react-ace';
+
+import "ace-builds/src-noconflict/mode-javascript"; // replace with mode source in the future
+import "ace-builds/src-noconflict/theme-tomorrow";
 
 export interface IEditorProps {
-  callBack: (inputCode: string) => void;
+  preloadedProg: string;
+  callBack: (newCode: string) => void;
 }
 
 
 function Editor(props: IEditorProps) {
+
+  const [value, setValue] = React.useState(props.preloadedProg);
+
+  function onChangeMethod(newCode: string) {
+    props.callBack(newCode);
+    setValue(newCode);
+  }
+
   return (
-    <TextField
-      id="outlined-multiline-static"
-      label="Editor"
-      multiline
-      rows="37"
-      placeholder="Code starts here..."
-      variant="outlined"
-      style={{ width: "100%" }}
-      onChange={e => props.callBack(e.target.value)}
-      fullWidth
+    <AceEditor 
+      className="react-ace"
+      mode="javascript"
+      theme="tomorrow"
+      height="100vh"
+      width="inherit"
+      fontSize="17"
+      value={value}
+      tabSize={4}
+      onChange={onChangeMethod} 
     />
   );
 }
-// function Editor(props) {
-//   return (
-//   <TextField
-//   id="outlined-multiline-static"
-//   label="Editor"
-//   multiline
-//   rows="37"
-//   placeholder="Code starts here..."
-//   variant="outlined"
-//   style={{ width: "100%" }}
-//   onChange={e => props.callBack(e.target.value)}
-//   fullWidth
-// />
-
-//   )
-// }
-
-// Editor.contextType = EditorContext;
 
 export default Editor;
