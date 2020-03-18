@@ -5,6 +5,8 @@ import REPL from "../Workspace/REPL";
 import NavBar from '../NavBar/NavBar';
 
 function Playground() {
+  const preloadedProg = "// Type your program in here\n\n";
+
   return (
     <>
       <NavBar version library/>
