@@ -1,24 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import ToggleButton from "./SideBar/ToggleButton";
+import IconButton from "@material-ui/core/IconButton";
+import ClearIcon from "@material-ui/icons/Clear";
+import DehazeIcon from "@material-ui/icons/Dehaze";
+import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
+import { SideBarContext, IAction } from "./SideBarContext";
+import SourceDropDown from "./SourceDropDown";
 import "./NavBar.css";
 
 /**
- * Props
+ * States
  */
 
-interface navBarProps {
-  source: string;
-  library: string;
-}
-
-const NavBar: React.FC<navBarProps> = () => {
+const NavBar: React.FC = () => {
+  const { state, dispatch } = useContext(SideBarContext);
+  const toggleButton = (): IAction =>
+    dispatch({
+      type: "BUTTON_PRESSED"
+    });
   return (
     <div>
       <header className="navBar">
         <nav className="navBar_navigation">
-          <div>
-            <ToggleButton />
+          <div className="toggleButton">
+            <IconButton onClick={toggleButton} edge="start">
+              <DehazeIcon
+                style={{
+                  color: "white",
+                  height: "45px",
+                  alignSelf: "flex-start",
+                  display: state.sideDrawerState ? "none" : "flex"
+                }}
+              />
+              <ClearIcon
+                style={{
+                  color: "white",
+                  height: "45px",
+                  alignSelf: "flex-start",
+                  display: state.sideDrawerState ? "flex" : "none"
+                }}
+              />
+            </IconButton>
           </div>
           <div className="spacer" />
           <div>
@@ -27,7 +49,7 @@ const NavBar: React.FC<navBarProps> = () => {
           <div className="navBar_navigation-items">
             <ul>
               <li>
-                <a href="/">Source</a>
+                <SourceDropDown />
               </li>
               <li>
                 <a href="/">Library</a>
@@ -45,6 +67,17 @@ const NavBar: React.FC<navBarProps> = () => {
                 <a href="/">Share</a>
               </li>
             </ul>
+          </div>
+          <div className="spacer2"></div>
+          <div className="playButton">
+            <IconButton>
+              <DirectionsRunIcon
+                style={{
+                  color: "white",
+                  height: "45px"
+                }}
+              />
+            </IconButton>
           </div>
         </nav>
       </header>

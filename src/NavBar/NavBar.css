@@ -11,11 +11,14 @@
   align-items: center;
   padding: 1.5rem;
 }
+
 .spacer {
-  width: 300px;
+  width: 250px;
 }
+
 .navBar_logo {
   width: 50px;
+  margin-right: 3em;
 }
 
 .navBar_navigation-items ul {
@@ -35,4 +38,26 @@
 .navBar_navigation-items a:hover,
 .navBar_navigation-items a:active {
   color: #c0c0c0;
+}
+
+@media (max-width: 769px) {
+  .navBar_navigation-items {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggleButton {
+    display: none;
+  }
+}
+@media (max-width: 769px) {
+  .spacer {
+    width: 100px;
+  }
+}
+@media (min-width: 769px) {
+  .playButton {
+    display: none;
+  }
 }

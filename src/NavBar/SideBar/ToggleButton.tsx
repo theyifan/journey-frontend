@@ -8,25 +8,12 @@ import "./ToggleButton.css";
  * Props
  */
 
-interface toggleButtonProps {}
-
-const ToggleButton: React.FC<toggleButtonProps> = toggleButtonProps => {
-  //state area
-  const [open, setOpen] = React.useState(false);
-  //handle the openness and closeness of sidebar
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+const ToggleButton: React.FC = toggleButtonProps => {
   return (
     <div>
       <IconButton
         style={{ color: "white" }}
         aria-label="open drawer"
-        onClick={handleDrawerOpen}
         edge="start"
       >
         <MenuIcon />

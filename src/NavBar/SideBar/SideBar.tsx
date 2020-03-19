@@ -1,6 +1,5 @@
 import React from "react";
 
-import ClearIcon from "@material-ui/icons/Clear";
 import "./SideBar.css";
 
 /**
@@ -14,16 +13,6 @@ const SideBar: React.FC<sideBarProps> = sideBarProps => {
     <div>
       <nav className="side-drawer">
         <ul>
-          <li>
-            <ClearIcon
-              style={{
-                color: "white",
-                height: "45px",
-                alignSelf: "flex-start"
-              }}
-            />
-            <img src="images/logo.png" style={{ width: "45px" }} />
-          </li>
           <li>
             <a href="/">Source</a>
           </li>

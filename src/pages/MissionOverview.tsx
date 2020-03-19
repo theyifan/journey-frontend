@@ -1,6 +1,7 @@
 import React from "react";
 import MissionOverviewCard from "../Reusable Component/MissionOverviewCard";
 import NavBar from "../NavBar/NavBar2";
+import CompleteNavBar from "./../NavBar/CompleteNavBar";
 import { Container } from "@material-ui/core";
 
 const today = new Date().toLocaleString();
@@ -8,7 +9,7 @@ const today = new Date().toLocaleString();
 export default function MissionOverview() {
   return (
     <>
-      <NavBar seed={1} />
+      <CompleteNavBar />
       <Container maxWidth="lg">
         <MissionOverviewCard
           to="/mission/1/1"
