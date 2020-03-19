@@ -1,18 +1,15 @@
 import React from 'react';
 import { Theme, createStyles, makeStyles, useTheme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import {Typography, Button, IconButton, CardMedia, CardContent, Card, Grid} from '@material-ui/core/';
 import { Link } from 'react-router-dom';
+import {
+  AssessmentStatuses,
+  IAssessmentOverview
+} from '../assessment/assessmentShape';
 
-interface IMissionOverviewCardProps {
-  imageURL: string,
-  dueDate: string,
-  to: string,
-}
+interface IOwnProps  {
+  overview: IAssessmentOverview
+} 
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,31 +44,99 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
   );
   
-  export default function MissionOverviewCard(props:IMissionOverviewCardProps) {
+  // export interface IAssessmentOverview {
+  //   category: AssessmentCategory; //
+  //   closeAt: string; //
+  //   coverImage: string;  //
+  //   fileName?: string; // For mission control
+  //   grade: number;
+  //   id: number;
+  //   maxGrade: number;  //
+  //   maxXp: number;  //
+  //   number?: string; // For mission control
+  //   openAt: string;  //
+  //   title: string;  //
+  //   reading?: string; // For mission control
+  //   shortSummary: string;  //
+  //   status: AssessmentStatus;
+  //   story: string | null;
+  //   xp: number;
+  //   gradingStatus: GradingStatus;
+  //   private?: boolean;
+  // }
+
+  export default function MissionOverviewCard(props: IOwnProps) {
     const classes = useStyles();
     const theme = useTheme();
-    const {imageURL, dueDate, to } = props;
+    const overview = props.overview;
+    const DEFAULT_QUESTION_ID = 0;
+
+    const makeAssessmentInteractButton = (overview: IAssessmentOverview) => {
+      let label: string;
+  
+      switch (overview.status) {
+        case AssessmentStatuses.not_attempted:
+          label = 'Attempt';
+          break;
+        case AssessmentStatuses.attempting:
+          label = 'Continue';
+          break;
+        case AssessmentStatuses.attempted:
+          label = 'Review';
+          break;
+        case AssessmentStatuses.submitted:
+          label = 'Review';
+          break;
+        default:
+          // If we reach this case, backend data did not fit IAssessmentOverview
+          label = 'Review';
+          break;
+      }
+      return (
+          <Button variant="contained" color="primary" component={Link} to={`/${(
+          overview.category)}/${overview.id.toString()}/${DEFAULT_QUESTION_ID}`}>
+            {label}
+          </Button>
+      );
+    }
     
     return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.cover}
-        image={require("../assets/sample.jpg")}
-        title="sample background"
-      />
-      <div className={classes.details}>
+      <Grid container spacing={3} alignItems='center'>
+        <Grid item xs={3}>
+          <CardMedia
+            className={classes.cover}
+            image={overview.coverImage}
+            title="sample background"
+          />
+        </Grid>
+        <Grid item xs={9}>
+        <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
-            Live From Space
+            {overview.title}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            Due {dueDate}
+            Due {overview.closeAt}
           </Typography>
-          <Button variant="contained" color="primary" component={Link} to={to}>
-            Attempt
-          </Button>
+          <Typography variant="subtitle1" color="textSecondary">
+            Grade: {overview.grade} / {overview.maxGrade}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Max XP: {overview.maxXp}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+              {overview.shortSummary}
+          </Typography>
+          <div className="listing-button">
+              {makeAssessmentInteractButton(overview)}
+          </div>
         </CardContent>
       </div>
+          
+        </Grid>
+      </Grid>
     </Card>
+    
   );
 }

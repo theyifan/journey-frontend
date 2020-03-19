@@ -4,7 +4,7 @@ import MissionOverview from "./pages/MissionOverview";
 import Playground from "./pages/Playground";
 import CompleteNavBar from "./NavBar/CompleteNavBar";
 import NavBar from "./NavBar/NavBar";
-import OpenPage from "./OpenPage/OpenPage";
+import AssessmentContainer from "./assessment/mockAssessmentContainer"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { SideBarContextProvider } from "./NavBar/SideBarContext";
