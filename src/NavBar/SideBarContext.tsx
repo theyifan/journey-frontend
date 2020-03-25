@@ -16,7 +16,6 @@ const initialState: IState = {
 export const SideBarContext = createContext<IState | any>(initialState);
 
 function reducer(state: IState, action: IAction): IState {
-  console.log("on");
   switch (action.type) {
     case "BUTTON_PRESSED":
       return {

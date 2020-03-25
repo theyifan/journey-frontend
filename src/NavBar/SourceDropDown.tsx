@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./SourceDropDown.css";
 import { Store, IGlobalAction } from "./../Store";
+import IconButton from "@material-ui/core/IconButton";
 
 /**
  * Props
@@ -9,7 +10,6 @@ import { Store, IGlobalAction } from "./../Store";
 const SourceDropDown: React.FC = () => {
   const { globalState, dispatch } = useContext(Store);
   const changeSource = (source: string): IGlobalAction => {
-    console.log("in");
     return dispatch({
       type: source
     });
@@ -19,16 +19,19 @@ const SourceDropDown: React.FC = () => {
     <div className="dropdown">
       <div className="source">
         <button>{globalState.source}</button>
-        <ul>
-          <li>
-            <button
-              onClick={() => {
-                console.log("in");
-                return changeSource("CHANGE_TO_SOURCE1");
-              }}
-            >
-              Source1
-            </button>
+        <ul
+          onClick={() => {
+            console.log("in");
+            return;
+          }}
+        >
+          <li
+            onClick={() => {
+              console.log("in");
+              return;
+            }}
+          >
+            <IconButton>Source1</IconButton>
           </li>
           <li>
             <button onClick={() => changeSource("CHANGE_TO_SOURCE2")}>

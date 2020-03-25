@@ -4,13 +4,14 @@ import Question from "../Workspace/Question";
 import Editor from "../Workspace/Editor";
 import REPL from "../Workspace/REPL";
 import CompleteNavBar from "../NavBar/CompleteNavBar";
+import NavBar2 from "../NavBar/NavBar2";
 
 function Mission() {
   return (
     <>
-      <CompleteNavBar />
+      <NavBar2 />
       <Workspace
-        editor={<Editor callBack={() => {}} />}
+        editor={<Editor preloadedProg={""} callBack={() => {}} />}
         repl={<REPL />}
         question={<Question />}
       />

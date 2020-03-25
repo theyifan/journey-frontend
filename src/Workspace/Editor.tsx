@@ -1,5 +1,5 @@
 import React from "react";
-import AceEditor from 'react-ace';
+import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-javascript"; // replace with mode source in the future
 import "ace-builds/src-noconflict/theme-tomorrow";
@@ -9,9 +9,7 @@ export interface IEditorProps {
   callBack: (newCode: string) => void;
 }
 
-
 function Editor(props: IEditorProps) {
-
   const [value, setValue] = React.useState(props.preloadedProg);
 
   function onChangeMethod(newCode: string) {
@@ -20,7 +18,7 @@ function Editor(props: IEditorProps) {
   }
 
   return (
-    <AceEditor 
+    <AceEditor
       className="react-ace"
       mode="javascript"
       theme="tomorrow"
@@ -29,7 +27,8 @@ function Editor(props: IEditorProps) {
       fontSize="17"
       value={value}
       tabSize={4}
-      onChange={onChangeMethod} 
+      onChange={onChangeMethod}
+      style={{ zIndex: -1 }}
     />
   );
 }

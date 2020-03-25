@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function NavBar({
+function NavBar2({
   version = false,
   library = false,
   language = false,
@@ -169,4 +169,4 @@ function NavBar({
   );
 }
 
-export default NavBar;
+export default NavBar2;

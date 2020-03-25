@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./SideBar.css";
-
+import SideBarDropDownSource from "./SideBarDropDownSource";
 /**
  * Props
  */
@@ -14,7 +14,7 @@ const SideBar: React.FC<sideBarProps> = sideBarProps => {
       <nav className="side-drawer">
         <ul>
           <li>
-            <a href="/">Source</a>
+            <SideBarDropDownSource />
           </li>
           <li>
             <a href="/">Library</a>
