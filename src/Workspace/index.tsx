@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import "./workspace.css";
 
@@ -19,8 +20,8 @@ export default function(props: IWorkspaceProps){
   let [state, setState] : [IWorkspaceState, Function] = React.useState({
       runState: false,
       editorInput: "", // initially named code
-      leftPanelWidth: window.innerWidth < 800 ? 100 : 50,
-      rightPanelWidth: window.innerWidth < 800 ? 100 : 50,
+      leftPanelWidth: 50,
+      rightPanelWidth: 50,
     });
 
   const phoneBreakpoint = 800;
@@ -43,23 +44,26 @@ export default function(props: IWorkspaceProps){
 
   const callBackFromRepl = () => {
     setState({
+      ...state,
       runState: true
     });
   };
   
   const callBackFromReplStop = () => {
     setState({
+      ...state,
       runState: true
     });
   };
 
   const callBackFromEditor = (childData: string) => {
     setState({
+      ...state,
       editorInput: childData
     });
   };
-  
-  const handleMouseDown = () => {
+
+  const handleResize = () => {
     window.addEventListener('mousemove', resize);
     window.addEventListener('mouseup', stopResize);
   }
@@ -85,9 +89,9 @@ export default function(props: IWorkspaceProps){
         {React.cloneElement(props.editor, {
           callBack: callBackFromEditor,
         })}
-        <div className="resizer" onMouseDown={handleMouseDown}></div>
+        <div className="resizer" onMouseDown={handleResize}></div>
       </div>
-      <div style={{width: `${state.rightPanelWidth}vw` }}>
+      <div style={{width: `${state.rightPanelWidth}vw`}}>
         {React.cloneElement(props.repl, {
           callBack: callBackFromRepl,
           runState: state.runState,
