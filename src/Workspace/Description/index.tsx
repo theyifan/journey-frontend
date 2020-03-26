@@ -10,6 +10,10 @@ import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
 import ListVisualizer from "./ListVisualizer";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SubstVisualizer from "./SubstVisualizer";
+import SearchIcon from "@material-ui/icons/Search";
+import PublicIcon from "@material-ui/icons/Public";
+import EnvVisualizer from "./EnvVisualizer";
+import Inspector from "./Inspector";
 
 const useStyles = makeStyles({
   root: {
@@ -33,10 +37,20 @@ export default function Description() {
   const { globalState, dispatch } = useContext(Store);
   let tabButtonArr: JSX.Element[];
   let tabContentArr: JSX.Element[];
-  if (globalState.source == "Source1") {
-    tabButtonArr = [<ImportContactsIcon />, <SettingsEthernetIcon />];
-    tabContentArr = [<IntroductionTab />, <ListVisualizer />];
-  } else {
+  if (globalState.source == "Source3" || globalState.source == "Source4") {
+    tabButtonArr = [
+      <ImportContactsIcon />,
+      <VisibilityIcon />,
+      <SearchIcon />,
+      <PublicIcon />
+    ];
+    tabContentArr = [
+      <IntroductionTab />,
+      <ListVisualizer />,
+      <Inspector />,
+      <EnvVisualizer />
+    ];
+  } else if (globalState.source == "Source2") {
     tabButtonArr = [
       <ImportContactsIcon />,
       <VisibilityIcon />,
@@ -47,6 +61,9 @@ export default function Description() {
       <ListVisualizer />,
       <SubstVisualizer content={["function", "f(x)"]} />
     ];
+  } else {
+    tabButtonArr = [<ImportContactsIcon />, <SettingsEthernetIcon />];
+    tabContentArr = [<IntroductionTab />, <ListVisualizer />];
   }
 
   return (

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import ClearIcon from "@material-ui/icons/Clear";
 import DehazeIcon from "@material-ui/icons/Dehaze";
-import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { SideBarContext, IAction } from "./SideBarContext";
 import SourceDropDown from "./SourceDropDown";
 import "./NavBar.css";
@@ -103,7 +103,7 @@ const NavBar: React.FC = () => {
           <div className="spacer2"></div>
           <div className="playButton">
             <IconButton>
-              <DirectionsRunIcon
+              <PlayArrowIcon
                 style={{
                   color: "white",
                   height: "45px"
