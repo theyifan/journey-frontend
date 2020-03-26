@@ -24,12 +24,13 @@ function Editor(props: IEditorProps) {
       className="react-ace"
       mode="javascript"
       theme="tomorrow"
-      height="100vh"
+      height="90vh"
       width="inherit"
       fontSize="17"
       value={globalState.playgroundEditorValue}
       tabSize={4}
       onChange={onChangeMethod}
+      style={{ zIndex: 0 }}
     />
   );
 }
