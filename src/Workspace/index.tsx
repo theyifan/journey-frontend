@@ -53,15 +53,17 @@ export default class Workspace extends React.Component<
               })}
             </Resizable>
           </Grid>
-          <Grid item md style={{ marginTop: 50 }}>
+          <Grid item md style={{ marginTop: 50, width: "50%" }}>
             <Grid container direction="column" spacing={1}>
               <Grid item md>
-                {React.cloneElement(this.props.repl, {
-                  callBack: this.callBackFromRepl,
-                  runState: this.state.runState,
-                  editorInput: this.state.editorInput,
-                  callBackStop: this.callBackFromReplStop
-                })}
+                <Resizable>
+                  {React.cloneElement(this.props.repl, {
+                    callBack: this.callBackFromRepl,
+                    runState: this.state.runState,
+                    editorInput: this.state.editorInput,
+                    callBackStop: this.callBackFromReplStop
+                  })}
+                </Resizable>
               </Grid>
               <Grid item md>
                 {this.props.question}

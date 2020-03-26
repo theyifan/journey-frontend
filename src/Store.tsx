@@ -2,17 +2,20 @@ import React from "react";
 import { createContext } from "react";
 
 const defaultSource: string = "Source";
-const defaultLanguage: string = "source";
-const defaultLibaray: string = "none";
+const defaultLanguage: string = "Language";
+const defaultLibaray: string = "Library";
 
 interface IGlobalState {
-  source: string;
-  library: string;
-  language: string;
+  source: string | undefined;
+  library: string | undefined;
+  language: string | undefined;
 }
 
 export interface IGlobalAction {
   type: String;
+  source?: string;
+  library?: string;
+  language?: string;
 }
 
 const initialState: IGlobalState = {
@@ -28,25 +31,21 @@ function reducer(
   action: IGlobalAction
 ): IGlobalState {
   switch (action.type) {
-    case "CHANGE_TO_SOURCE1":
+    case "CHANGE_SOURCE":
       return {
         ...globalState,
-        source: "Source1"
+        source: action.source
       };
-    case "CHANGE_TO_SOURCE2":
+    case "CHANGE_LIBRARY":
+      console.log(action.library);
       return {
         ...globalState,
-        source: "Source2"
+        library: action.library
       };
-    case "CHANGE_TO_SOURCE3":
+    case "CHANGE_LANGUAGE":
       return {
         ...globalState,
-        source: "Source3"
-      };
-    case "CHANGE_TO_SOURCE4":
-      return {
-        ...globalState,
-        source: "Source4"
+        language: action.language
       };
     default:
       throw new Error();
