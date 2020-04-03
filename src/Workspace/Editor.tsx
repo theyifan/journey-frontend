@@ -23,10 +23,10 @@ function Editor(props: IEditorProps) {
     <AceEditor
       className="react-ace"
       mode="javascript"
-      theme="tomorrow"
+      theme="black"
       height="90vh"
       width="inherit"
-      fontSize="17"
+      fontSize={16}
       value={globalState.playgroundEditorValue}
       tabSize={4}
       onChange={onChangeMethod}
