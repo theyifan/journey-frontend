@@ -46,7 +46,7 @@ function Editor(props: IEditorProps) {
       }
       const editor = (aceEditor.current as any).editor;
       const session = editor.getSession();
- 
+
       // Has session ID
       if (props.editorSessionId !== '') {
         handleStartCollabEditing(editor);
@@ -116,7 +116,7 @@ function Editor(props: IEditorProps) {
     });
   };
 
- 
+
   
   return (
     <AceEditor
@@ -126,7 +126,6 @@ function Editor(props: IEditorProps) {
     height="90vh"
     width="inherit"
     ref={aceEditor}
-    className="react-ace"
     editorProps={{
       $blockScrolling: Infinity
     }}
@@ -135,7 +134,7 @@ function Editor(props: IEditorProps) {
     tabSize={4}
     value={globalState.playgroundEditorValue}
     onChange={onChangeMethod}
-    style={{ zIndex: 0 }}Z
+    style={{ zIndex: 0 }}
     setOptions={{
       fontFamily: "'Inconsolata', 'Consolas', monospace",
       enableBasicAutocompletion: true,

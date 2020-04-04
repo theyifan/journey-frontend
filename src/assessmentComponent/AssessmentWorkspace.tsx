@@ -54,8 +54,8 @@ class AssessmentWorkspace {
         {/* <Workspace
           editor={<Editor preloadedProg="" callBack={() => {}} />}
           repl={<REPL />}
-          question={<Question />} */}
-        />
+          question={<Question />} 
+        />*/}
       </>
     );
   }
