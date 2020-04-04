@@ -1,6 +1,5 @@
 import React from "react";
 import Workspace from "../Workspace";
-import Question from "../Workspace/Question";
 import Editor from "../Workspace/Editor";
 import REPL from "../Workspace/REPL";
 import NavBar2 from "../NavBar/NavBar2";
@@ -15,6 +14,9 @@ import {
   Library,
   QuestionTypes
 } from "../assessment/assessmentShape";
+
+export type AssessmentWorkspaceProps =  OwnProps & StateProps;
+
 
 export type StateProps = {
   assessment?: IAssessment;
@@ -49,10 +51,10 @@ class AssessmentWorkspace {
     return (
       <>
         <NavBar2 seed={1} />
-        <Workspace
+        {/* <Workspace
           editor={<Editor preloadedProg="" callBack={() => {}} />}
           repl={<REPL />}
-          question={<Question />}
+          question={<Question />} */}
         />
       </>
     );

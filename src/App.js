@@ -6,7 +6,7 @@ import AssessmentContainer from "./assessment/mockAssessmentContainer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { SideBarContextProvider } from "./NavBar/SideBarContext";
-import { StoreProvider } from "./Store";
+import { StoreProvider } from "./reducers/Store";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
               <Route exact path="/mission" component={MissionOverview} />
               <Route path="/mission/:missionID/:page" component={Mission} />
               <Route path="/playground" component={Playground} />
+              <Route path="/assessment" component={AssessmentContainer} />
             </Switch>
           </BrowserRouter>
         </StoreProvider>
