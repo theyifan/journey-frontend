@@ -17,7 +17,7 @@ import Inspector from "./Inspector";
 
 const useStyles = makeStyles({
   root: {
-    padding: "40px 0 20px"
+    padding: "40px 0 20px",
   },
   bullet: {
     display: "inline-block",
