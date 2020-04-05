@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import NavBar from "./NavBar";
-import SideBar from "./SideBar/SideBar";
+import SideBar from "./SideBar";
 import { SideBarContext } from "./SideBarContext";
 
 /**

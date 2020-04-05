@@ -1,2 +1,2 @@
 import * as React from 'react';
-import {mockAssessments} from '../Mocks/assessmentAPI';
+import {mockAssessments} from '../mocks/assessmentAPI';

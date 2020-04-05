@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Store, IGlobalAction } from "../reducers/Store";
+import { Store, IGlobalAction } from "../reducers/store";
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 import IconButton from "@material-ui/core/IconButton";
 import Runner from "./../library_function/Runner";

@@ -1,6 +1,6 @@
 import { compressToUTF16, decompressFromUTF16 } from "lz-string";
 
-import { IGlobalState } from "./Store";
+import { IGlobalState } from "./store";
 
 export type ISavedState = {
   playgroundEditorValue: string | undefined;

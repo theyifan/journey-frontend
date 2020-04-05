@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mockAssessmentOverviews, mockAssessments} from '../Mocks/assessmentAPI';
+import {mockAssessmentOverviews, mockAssessments} from '../mocks/assessmentAPI';
 import Assessment from '../assessmentComponent';
 import {IStateProps} from '../assessmentComponent'    
 import {

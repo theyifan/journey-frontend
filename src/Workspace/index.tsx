@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import BottomBar from "./BottomBar";
 import "./index.css";
 
 export interface IWorkspaceProps {
@@ -80,6 +81,7 @@ export default function(props: IWorkspaceProps){
 
   return inPhoneMode 
   ? (
+    <>
     <div className="root">
       <div className="root-mobile">
         <div className="right-panel">
@@ -107,6 +109,8 @@ export default function(props: IWorkspaceProps){
         </div>
       </div>
     </div>
+    <BottomBar />
+    </>
   ) : (
     <div className={clsx('root', isResizing && 'is-resizing')}>
       <div className="left-panel" style={{width: `${style.leftPanelWidth}vw`}}>

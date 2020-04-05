@@ -3,7 +3,7 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import TextsmsIcon from "@material-ui/icons/Textsms";
 
-import "./BottomBar.css";
+import "./index.css";
 
 interface completeNavBarProps {}
 

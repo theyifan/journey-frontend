@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import "./SideBar.css";
+import "./index.css";
 import SideBarDropDownTemplate from "./SideBarDropDownTemplate";
 /**
  * Props

@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SideBar from "./SideBar2";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import Configuration from "../Reusable Component/Configuration";
+import Configuration from "../components/Configuration";
 
 const drawerWidth = 140;
 

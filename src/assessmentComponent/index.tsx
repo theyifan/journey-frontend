@@ -1,7 +1,7 @@
 import * as React from "react";
 import NavBar2 from "../NavBar/NavBar2";
 import { Container } from "@material-ui/core";
-import MissionOverviewCard from "../Reusable Component/MissionOverviewCard";
+import MissionOverviewCard from "../components/MissionOverviewCard";
 
 import {
   AssessmentCategory,

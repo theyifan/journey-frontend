@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Store, IGlobalAction } from "./../Store";
+import { Store, IGlobalAction } from "./../store";
 import Runner from "./../library_function/Runner";
 import IconButton from "@material-ui/core/IconButton";
 

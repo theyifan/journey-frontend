@@ -8,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 
 import ListItemText from "@material-ui/core/ListItemText";
 
-import { Store, IGlobalAction } from "../../reducers/Store";
+import { Store, IGlobalAction } from "../../reducers/store";
 
 const useStyles = makeStyles({
   list: {

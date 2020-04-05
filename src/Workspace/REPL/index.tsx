@@ -3,10 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import AceEditor from "react-ace";
-import { IGlobalAction, Store } from "../reducers/Store";
-import EvalButton from "./EvalButton";
 import Typography from "@material-ui/core/Typography";
+import AceEditor from "react-ace";
+
+import { IGlobalAction, Store } from "../../reducers/store";
+import EvalButton from "../EvalButton";
 
 import "ace-builds/src-noconflict/mode-javascript"; // replace with mode source in the future
 import "ace-builds/src-noconflict/theme-tomorrow";

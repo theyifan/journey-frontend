@@ -6,7 +6,7 @@ import { checkSessionIdExists } from './collabEditing/';
 
 import "ace-builds/src-noconflict/mode-javascript"; // replace with mode source in the future
 import "ace-builds/src-noconflict/theme-tomorrow";
-import { IGlobalAction, Store } from "../reducers/Store";
+import { IGlobalAction, Store } from "../reducers/store";
 
 export interface IEditorProps extends IMainEditorProps, ICollabEditorProps {}
     

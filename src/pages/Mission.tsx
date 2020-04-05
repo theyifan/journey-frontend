@@ -2,13 +2,12 @@ import React from "react";
 import Workspace from "../Workspace";
 import Editor from "../Workspace/Editor";
 import REPL from "../Workspace/REPL";
-import CompleteNavBar from "../NavBar/CompleteNavBar";
-import NavBar2 from "../NavBar/NavBar2";
+import Navbar from "../NavBar";
 
 function Mission() {
   return (
     <>
-      <NavBar2 />
+      <Navbar />
       {/* <Workspace
         editor={<Editor preloadedProg={""} callBack={() => {}} />}
         repl={<REPL />}

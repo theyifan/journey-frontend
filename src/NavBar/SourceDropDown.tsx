@@ -4,7 +4,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ModuleLoader from "./../library_function/ModuleLoader";
 
-import { Store, IGlobalAction } from "../reducers/Store";
+import { Store, IGlobalAction } from "../reducers/store";
 
 type Props = {
   dropDownType: string;
