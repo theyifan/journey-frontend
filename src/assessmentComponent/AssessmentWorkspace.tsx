@@ -12,7 +12,7 @@ import {
   IQuestion,
   ITestcase,
   Library,
-  QuestionTypes
+  QuestionTypes,
 } from "../assessment/assessmentShape";
 
 export type AssessmentWorkspaceProps =  OwnProps & StateProps;
@@ -54,8 +54,8 @@ class AssessmentWorkspace {
         {/* <Workspace
           editor={<Editor preloadedProg="" callBack={() => {}} />}
           repl={<REPL />}
-          question={<Question />} 
-        />*/}
+          question={<Question />} */}
+        />
       </>
     );
   }

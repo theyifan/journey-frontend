@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import ModuleLoader from "./../library_function/ModuleLoader";
 
 import { Store, IGlobalAction } from "../reducers/Store";
 
@@ -48,6 +49,10 @@ const SourceDropDown: React.FC<Props> = ({
     setAnchorEl(null);
   };
 
+  const loadModule = (library: string) => {
+    ModuleLoader(library);
+  };
+
   const menuList = (
     <div>
       {options.map(text => (
@@ -55,6 +60,9 @@ const SourceDropDown: React.FC<Props> = ({
           style={{ fontSize: "12px" }}
           button
           onClick={() => {
+            if (str === "library") {
+              loadModule(text);
+            }
             handleClose();
             return change(text);
           }}

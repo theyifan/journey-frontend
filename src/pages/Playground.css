@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+  .playgroundPhone {
+    display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .playgroundComputer {
+    display: none;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar/NavBar2";
-import Workspace from "./Workspace";
+import Workspace from "./Workspace/WorkspaceCom";
 
 function App() {
   return (

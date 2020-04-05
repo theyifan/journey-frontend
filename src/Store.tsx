@@ -1,23 +1,11 @@
 import React from "react";
 import { createContext } from "react";
-import { ICollabEditorProps } from "../Workspace/Editor";
-import {
-  CHANGE_LANGUAGE, 
-  CHANGE_SOURCE, 
-  CHANGE_LIBRARY, 
-  UPDATE_EDITOR_VALUE, 
-  INIT_INVITE, 
-  FINISH_INVITE, 
-  SET_EDITOR_SESSION_ID,
-  SET_WEBSOCKET_STATUS
-} from './actionTypes';
 
 const defaultSource: string = "Source";
 const defaultLanguage: string = "Language";
 const defaultLibaray: string = "Library";
 const defaultValue: string = "// Type your program in here\n\n";
 const defaultReplValue: string[] = [""];
-
 
 export interface IGlobalState {
   source: string | undefined;
@@ -28,10 +16,8 @@ export interface IGlobalState {
   replComponents: React.ReactElement[];
   eval: boolean | undefined;
   run: boolean | undefined;
-  CollabEditorState: ICollabEditorProps;
 }
 
-// Action Interfaces
 export interface IGlobalAction {
   type: String;
   source?: string;
@@ -44,25 +30,6 @@ export interface IGlobalAction {
   runComponent?: React.ReactElement;
 }
 
-
-export interface ICollabAction {
-  type: string;
-  playgroundEditorValue: string;
-  editorSessionId: string;
-  websocketStatus: number;
-}
-
-
-// State Interfaces
-export const CollabEditorState: ICollabEditorProps = {
-  editorSessionId: '',
-  sharedbAceInitValue: '',
-  sharedbAceIsInviting: false,
-  websocketStatus: 0,
-};
-
-
-
 const initialState: IGlobalState = {
   source: defaultSource,
   library: defaultLibaray,
@@ -71,16 +38,11 @@ const initialState: IGlobalState = {
   replValue: defaultReplValue,
   replComponents: [],
   eval: false,
-  run: false,
-  CollabEditorState: CollabEditorState
+  run: false
 };
-
-
 
 export const Store = createContext<IGlobalState | any>(initialState);
 
-
-// Reducers
 function reducer(
   globalState: IGlobalState,
   action: IGlobalAction
@@ -138,52 +100,6 @@ function reducer(
         replValue: [""],
         run: true
       };
-    default:
-      throw new Error();
-  }
-}
-
-const CollabReducer = (
-  globalState: IGlobalState,
-  action: ICollabAction
-): IGlobalState => {
-  switch (action.type) {
-    case INIT_INVITE:
-      return {
-        ...globalState,
-        CollabEditorState: {
-          ...globalState.CollabEditorState,
-          sharedbAceInitValue: action.playgroundEditorValue,
-          sharedbAceIsInviting: true
-        }
-      };
-    case FINISH_INVITE:
-      return {
-        ...globalState,
-        CollabEditorState: {
-          ...globalState.CollabEditorState,
-          sharedbAceIsInviting: false
-        }
-      };
-    case SET_EDITOR_SESSION_ID:
-      return {
-        ...globalState,
-        CollabEditorState: {
-          ...globalState.CollabEditorState,
-          editorSessionId: action.editorSessionId
-        }
-      };
-    
-      case SET_WEBSOCKET_STATUS:
-        return {
-          ...globalState,
-          CollabEditorState: {
-            ...globalState.CollabEditorState,
-            websocketStatus: action.websocketStatus
-          }
-        };
-
-
     default:
       throw new Error();
   }

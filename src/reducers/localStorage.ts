@@ -22,7 +22,7 @@ export const loadStoredState = (): ISavedState | undefined => {
 export const saveState = (state: IGlobalState) => {
   try {
     const stateToBeSaved: ISavedState = {
-      playgroundEditorValue: state.playgroundEditorValue
+      playgroundEditorValue: state.playgroundEditorValue,
     };
     const serialized = compressToUTF16(JSON.stringify(stateToBeSaved));
     localStorage.setItem("storedState", serialized);

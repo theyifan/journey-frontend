@@ -36,43 +36,41 @@ function Editor(props: IEditorProps) {
   const onChangeMethod = (newCode: string) => {
     return dispatch({
       type: "UPDATE_EDITOR_VALUE",
-      playgroundEditorValue: newCode
+      playgroundEditorValue: newCode,
     });
-  }
-  
-  React.useEffect(() => {
-      if (!aceEditor.current) {
-        return;
-      }
-      const editor = (aceEditor.current as any).editor;
-      const session = editor.getSession();
+  };
 
-      // Has session ID
-      if (props.editorSessionId !== '') {
-        handleStartCollabEditing(editor);
-      }
+  React.useEffect(() => {
+    if (!aceEditor.current) {
+      return;
     }
-  )
+    const editor = (aceEditor.current as any).editor;
+    const session = editor.getSession();
+
+    // Has session ID
+    if (props.editorSessionId !== "") {
+      handleStartCollabEditing(editor);
+    }
+  });
 
   React.useEffect(() => {
     if (ShareAce !== null) {
-        // Umounting... Closing websocket
-        ShareAce.WS.close();
+      // Umounting... Closing websocket
+      ShareAce.WS.close();
     }
     ShareAce = null;
-    }
-  )
+  });
 
   const handleStartCollabEditing = (editor: any) => {
     const ShareAce = new sharedbAce(props.editorSessionId!, {
-      WsUrl: 'wss://' + LINKS.SHAREDB_SERVER + 'ws/',
+      WsUrl: "wss://" + LINKS.SHAREDB_SERVER + "ws/",
       pluginWsUrl: null,
-      namespace: 'codepad'
+      namespace: "codepad",
     });
-    ShareAce.on('ready', () => {
+    ShareAce.on("ready", () => {
       ShareAce.add(
         editor,
-        ['code'],
+        ["code"],
         [
           // SharedbAceRWControl,
           // SharedbAceMultipleCursors
@@ -108,15 +106,14 @@ function Editor(props: IEditorProps) {
     // Checks connection status every 5sec
     interval = setInterval(checkStatus, 5000);
 
-    WS.addEventListener('open', (event: Event) => {
+    WS.addEventListener("open", (event: Event) => {
       props.handleSetWebsocketStatus!(1);
     });
-    WS.addEventListener('close', (event: Event) => {
+    WS.addEventListener("close", (event: Event) => {
       props.handleSetWebsocketStatus!(0);
     });
-  };
-
-
+  }
+  
   
   return (
     <AceEditor

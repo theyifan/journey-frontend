@@ -16,15 +16,21 @@
   width: 250px;
 }
 
+.listPlusLogo {
+  display: inline-flex;
+}
 .navBar_logo {
   width: 50px;
-  margin-right: 3em;
+}
+.navBar_navigation-items {
+  padding-top: 15px;
+  height: 45px;
 }
 
 .navBar_navigation-items ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-block-end: 0;
   display: flex;
 }
 .navBar_navigation-items li {
@@ -43,6 +49,12 @@
 @media (max-width: 769px) {
   .navBar_navigation-items {
     display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .navBar_logo {
+    padding-top: 8px;
   }
 }
 

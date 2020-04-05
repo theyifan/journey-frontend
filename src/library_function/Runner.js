@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, useContext } from "react";
+import ReactDOM from "react-dom";
+import { stringify } from "js-slang/dist/interop";
+import { IGlobalAction, Store } from "../Store";
 // const HtmlToReactParser = require('html-to-react').Parser;
 
 class Runner extends Component {
@@ -14,17 +16,14 @@ class Runner extends Component {
   }
 
   render() {
-    let outputValue;
-    try {
-      outputValue = eval(this.props.code);
-    } catch (errorMessage) {
-      return <p style="color: red">{errorMessage}</p>;
-    }
-    if (outputValue !== undefined && outputValue.$canvas !== undefined) {
-        this.canvas = outputValue.$canvas;
-        return <div></div>;
-    } else if (outputValue !== undefined) {
-      return <p>{outputValue}</p>;
+    if (
+      this.props.value !== undefined &&
+      this.props.value.$canvas !== undefined
+    ) {
+      this.canvas = this.props.value.$canvas;
+      return <div></div>;
+    } else {
+      return <p>{stringify(this.props.value)}</p>;
     }
   }
 

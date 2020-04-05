@@ -14,10 +14,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import PublicIcon from "@material-ui/icons/Public";
 import EnvVisualizer from "./EnvVisualizer";
 import Inspector from "./Inspector";
+import TabStyle from "./TabStyle";
 
 const useStyles = makeStyles({
   root: {
-    padding: "40px 0 20px",
+    minWidth: 275,
+    paddingTop: "45px"
   },
   bullet: {
     display: "inline-block",
@@ -69,7 +71,7 @@ export default function Description() {
   return (
     <Card className={cardClasses.root}>
       <CardContent>
-        <TabContent tabButtonArr={tabButtonArr} tabContentArr={tabContentArr} />
+        <TabStyle tabButtonArr={tabButtonArr} tabContentArr={tabContentArr} />
       </CardContent>
     </Card>
   );
