@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TabContent from "./TabContent";
-import { Store } from "../../reducers/store";
+import { Store } from "../../reducers/Store";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import IntroductionTab from "./IntroductionTab";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";

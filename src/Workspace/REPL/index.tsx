@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AceEditor from "react-ace";
 
-import { IGlobalAction, Store } from "../../reducers/store";
+import { IGlobalAction, Store } from "../../reducers/Store";
 import EvalButton from "../EvalButton";
 
 import "ace-builds/src-noconflict/mode-javascript"; // replace with mode source in the future

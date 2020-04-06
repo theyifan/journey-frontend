@@ -5,7 +5,7 @@ import Editor from "../Workspace/Editor";
 import Description from "../Workspace/Description/index";
 import CompleteNavBar from "../NavBar";
 import { saveState } from "../reducers/localStorage";
-import { Store } from "../reducers/store";
+import { Store } from "../reducers/Store";
 import "./Playground.css";
 import Repl2 from "../Workspace/REPL";
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Store, IGlobalAction } from "../reducers/store";
+import { Store, IGlobalAction } from "../reducers/Store";
 import Runner from "./../library_function/Runner";
 import { runInContext } from "js-slang";
 import createContext from "js-slang/dist/createContext";

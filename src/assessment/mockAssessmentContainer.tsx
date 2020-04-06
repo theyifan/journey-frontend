@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {mockAssessmentOverviews, mockAssessments} from '../mocks/assessmentAPI';
+// import {mockAssessmentOverviews, mockAssessments} from '../mocks/assessmentAPI';
 import Assessment from '../assessmentComponent';
 import {IStateProps} from '../assessmentComponent'    
 import {
@@ -14,35 +14,35 @@ export type State = {
     isStudent: boolean
 };
   
-class AssessmentContainer extends React.Component<{}, State> {
+// class AssessmentContainer extends React.Component<{}, State> {
 
-    constructor(props:any) {
-        super(props)
-        this.state = {
-            assessmentOverviews: mockAssessmentOverviews,
-            assessmentCategory: AssessmentCategories.Contest,
-            isStudent: false,
-         };
-    }
+//     constructor(props:any) {
+//         super(props)
+//         this.state = {
+//             assessmentOverviews: mockAssessmentOverviews,
+//             assessmentCategory: AssessmentCategories.Contest,
+//             isStudent: false,
+//          };
+//     }
 
-    private handleAssessmentOverviewFetch() {}
-    private handleSubmitAssessment() {}
+//     private handleAssessmentOverviewFetch() {}
+//     private handleSubmitAssessment() {}
     
-    private categoryFilter = (overview: IAssessmentOverview) =>
-    overview.category === this.state.assessmentCategory;
+//     private categoryFilter = (overview: IAssessmentOverview) =>
+//     overview.category === this.state.assessmentCategory;
    
     
-    public render() {
-      return (<Assessment 
-        assessmentOverviews={this.state.assessmentOverviews} 
-        handleAssessmentOverviewFetch={this.handleAssessmentOverviewFetch}
-        handleSubmitAssessment={this.handleSubmitAssessment}
-        assessmentCategory={this.state.assessmentCategory}
-        isStudent={this.state.isStudent}
-        />
+//     public render() {
+//       return (<Assessment 
+//         assessmentOverviews={this.state.assessmentOverviews} 
+//         handleAssessmentOverviewFetch={this.handleAssessmentOverviewFetch}
+//         handleSubmitAssessment={this.handleSubmitAssessment}
+//         assessmentCategory={this.state.assessmentCategory}
+//         isStudent={this.state.isStudent}
+//         />
         
-    );
-    }
-  }
+//     );
+//     }
+//   }
 
-  export default AssessmentContainer;
+//   export default AssessmentContainer;

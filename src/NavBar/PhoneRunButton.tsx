@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Store, IGlobalAction } from "../Store";
-import Runner from "../library_function/Runner";
+import { Store, IGlobalAction } from "../reducers/Store"
+import Runner from "./../library_function/Runner";
 import IconButton from "@material-ui/core/IconButton";
 
 import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
